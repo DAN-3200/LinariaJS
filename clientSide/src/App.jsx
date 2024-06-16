@@ -34,6 +34,11 @@ export default function App() {
 			font-weight: bolder;
 			color: ${color.blue[500]};
 		`,
+		box: css`
+			background-color: ${color.white[500]};
+			padding: 12px;
+			border-radius: 0px;
+		`,
 	}
 
 	return (
@@ -48,10 +53,6 @@ export default function App() {
 					grid-column-gap: 8px;
 					grid-row-gap: 8px;
 					border-radius: 16px;
-
-					& > div {
-						background-color: white;
-					}
 
 					& > div:nth-child(1) {
 						grid-area: 1 / 1 / 2 / 4;
@@ -70,25 +71,16 @@ export default function App() {
 					}
 				`}
 			>
-				<div
-					className={cx(
-						glob.center,
-						loc.bolder,
-						css`
-							grid-area: 1 / 1 / 2 / 4;
-						`
-					)}
-				>
-					Linaria
-				</div>
-				<div className={glob.center}>Lemure</div>
-				<div className={glob.center}>
+				<div className={loc.box}>Linaria</div>
+				<div className={cx(glob.center, loc.box)}>Lemure</div>
+				<div className={cx(glob.center, loc.box)}>
 					<Button>AAAAAAAAAAAA</Button>
 				</div>
-				<div></div>
-				<div></div>
-				<div></div>
+				<div className={loc.box}></div>
+				<div className={loc.box}></div>
 			</div>
 		</>
 	)
 }
+
+
