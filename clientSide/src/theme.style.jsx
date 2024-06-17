@@ -14,7 +14,7 @@ css`
 		}
 		#root {
 			height: 100vh;
-			background-color: ${color.black[500]};
+			background-color: ${color.blue[100]};
 			display: flex;
 			align-items: center;
 			justify-content: center;
