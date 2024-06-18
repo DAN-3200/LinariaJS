@@ -2,6 +2,8 @@ import { css, cx } from '@linaria/core'
 import { styled } from '@linaria/react'
 import { color } from '../theme.style'
 
+// Trocar a estrutura de dados Linaria de Objetos para Classes
+
 // class css global
 const glob = {
 	center: css`
@@ -27,6 +29,9 @@ const glob = {
 }
 
 export default function Bento() {
+	const title = document.getElementsByTagName('title')[0]
+	title.innerHTML = 'Bento'
+
 	// class css local/scoped
 	const loc = {
 		bolder: css`
@@ -37,10 +42,6 @@ export default function Bento() {
 			background-color: ${color.white[500]};
 			padding: 12px;
 			border-radius: 0px;
-		`,
-		Button: styled(glob.Button)`
-			background-color: ${color.red[500]};
-			color: ${color.white[500]};
 		`,
 		Parent: styled.div`
 			width: 960px;
@@ -71,30 +72,35 @@ export default function Bento() {
 				grid-area: 3 / 4 / 4 / 5;
 			}
 		`,
+		Button: styled(glob.Button)`
+			background-color: ${color.red[500]};
+			color: ${color.white[500]};
+		`,
 	}
-
-	loc.btn = styled(loc.Button)`
-		min-width: 80px;
-		transition: 0.2s;
-
-		&:active {
-			transition: 0.2;
-			transform: rotate(180deg);
-		}
-	`
 
 	return (
 		<>
 			<loc.Parent>
 				<div className={loc.box}>
-					<loc.btn>Cada uma..</loc.btn>
+					<loc.Button
+						className={css`
+							min-width: 80px;
+							transition: 0.2s;
+
+							&:active {
+								transition: 0.2;
+								transform: rotate(180deg);
+							}
+						`}
+					>
+						Cada uma..
+					</loc.Button>
 				</div>
 				<div className={cx(glob.center, loc.box)}>
 					<loc.Button>Styled</loc.Button>
 				</div>
 				<div className={cx(glob.center, loc.box)}>
 					<glob.Button
-						onClick={() => alert('A Lib Linaria.js é ótima')}
 						className={css`
 							color: white;
 						`}

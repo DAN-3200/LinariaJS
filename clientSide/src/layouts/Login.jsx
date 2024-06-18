@@ -3,6 +3,9 @@ import { styled } from '@linaria/react'
 import { color } from '../theme.style'
 
 export default function Login() {
+	const title = document.getElementsByTagName('title')[0]
+	title.innerHTML = 'Login'
+
 	const loc = {
 		Parent: styled.div`
 			width: 1080px;
@@ -45,12 +48,11 @@ export default function Login() {
 						className={css`
 							font-weight: bold;
 							color: ${color.black[400]};
-                     align-self: center;
+							align-self: center;
 						`}
 					>
 						Login
 					</h1>
-            
 				</div>
 			</loc.Parent>
 		</>
